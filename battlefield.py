@@ -10,6 +10,7 @@ class Battlefield:
         self.display_welcome()
         self.herd.create_herd()
         self.fleet.create_fleet()
+
         
 
     def display_welcome(self):
@@ -20,7 +21,7 @@ class Battlefield:
         pass
 
 
-    #pass random turn
+    #pass in random turn
     def dino_turn(self, dinosaur):
         pass
 
@@ -30,10 +31,12 @@ class Battlefield:
     #Create Fleet and create Herd in run game and call the show after every turn
     #show opponents after every turn
     def show_dino_opponent_options(self):
+        print("The dinosaur opponent options is as follows: ")
         for robot in self.fleet.robots:
             print(robot.name)
 
     def show_robo_opponent_options(self):
+        print("The robot opponent options is as follows: ")
         for dinosaur in self.herd.dinosaurs:
             print(dinosaur.name)
 
