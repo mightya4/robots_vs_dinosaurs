@@ -3,7 +3,7 @@ class Robot:
     def __init__(self, name):
         self.name = name
         self.health = 0
-        self.weapon = None #initialize from weapon class
+        self.weapon = Weapon("Pugil stick", 50)
 
     def attack(self, dinosaur):
-        pass
+        dinosaur.health -= self.weapon.attack_power

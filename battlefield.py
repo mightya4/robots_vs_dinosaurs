@@ -3,8 +3,8 @@ from herd import Herd
 
 class Battlefield:
     def __init__(self):
-        self.fleet = None
-        self.herd = None
+        self.fleet = Fleet()
+        self.herd = Herd()
 
     def run_game(self):
         pass
