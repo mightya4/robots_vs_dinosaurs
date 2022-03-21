@@ -3,3 +3,6 @@ class Dinosaur:
         self.name = name
         self.attack_power = attack_power
         self.health = 0
+
+    def attack(self, robot):
+        pass
