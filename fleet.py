@@ -7,4 +7,3 @@ class Fleet:
         self.robots.append(Robot("Xerox the Printer"))
         self.robots.append(Robot("Starbucks the Coffee Dispensor"))
         self.robots.append(Robot("Glitch the Math Matrix"))
-    
