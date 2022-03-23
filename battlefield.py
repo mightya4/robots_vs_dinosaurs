@@ -6,6 +6,7 @@ class Battlefield:
     def __init__(self):
         self.fleet = Fleet()
         self.herd = Herd()
+        self.winners = None
 
     def run_game(self):
         self.display_welcome()
@@ -24,6 +25,8 @@ class Battlefield:
 
     
     def battle(self):
+        if self.is_empty_group(self.fleet.robots) or self.is_empty_group(self.fleet.robots):
+            self.winners = self.fleet.robots or self.herd.dinosaurs
         self.current_turn = None
         while True:
             user_input = int(input("Which opponent will go first? Enter 1 for Dinosaur or Enter 2 for Robot"))
@@ -50,22 +53,24 @@ class Battlefield:
     def dino_turn(self, dinosaur):
         #select one of the dinosaur from the list
         self.show_robo_opponent_options()
-        len_of_fleet = len(Fleet().robots)
-        fleet_list = Fleet().robots
+        len_of_fleet = len(self.fleet.robots)
+        fleet_list = self.fleet.robots
         user_input = int(input("Which Robot would you like to attack: ")) 
         while user_input > len_of_fleet or user_input < 0:
             user_input = int(input("Which Robot would you like to attack: ")) 
         dinosaur.attack(fleet_list[user_input])
+        return self.battle()
         #check opponent list if empty
 
     def robo_turn(self, robot):
         self.show_dino_opponent_options()
-        len_of_herd = len(Fleet().robots)
-        dinosaur_list = Herd().dinosaurs
+        len_of_herd = len(self.herd.dinosaurs)
+        dinosaur_list = self.herd.dinosaurs
         user_input = int(input("Which Dinosaur would you like to attack: "))
         while user_input > len_of_herd or user_input < 0:
             user_input = int(input("Which Dinosaur would you like to attack: "))
         robot.attack(dinosaur_list[user_input])
+        return self.battle()
         
         
     
@@ -84,8 +89,9 @@ class Battlefield:
             print(f"{dinosaur.name} : [{self.dino_index}]")
 
     def display_winners(self):
-        pass
+        print("The winners are: ")
+        for winner in self.winners:
+            print(winner.name)
+
         
-        
-b1 = Battlefield()
-b1.run_game()
+
